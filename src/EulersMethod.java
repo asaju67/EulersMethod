@@ -1,6 +1,6 @@
 
 public class EulersMethod {
-    private static double yfirst, dydx, increment, xfirst, xlast, b;
+    public static double yfirst, dydx, increment, xfirst, xlast, b;
 
     public static double getY() {
         return yfirst = IO.getInt("Enter first y-coordinate");
@@ -27,15 +27,11 @@ public class EulersMethod {
         b = getDydx(x,y) * x + y;
     }
 
-    public static double approximateY() {
-        getXfirst();
-        getY();
-        getXlast();
-        getIncrement();
+    public static double approximateY(double firstX, double lastX, double firstY, double increment) {
 
-        double y = yfirst;
-        double x = xfirst;
-        for (double i = xfirst; i < xlast; i += increment) {
+        double y = firstY;
+        double x = firstX;
+        for (double i = firstX; i < lastX; i += increment) {
             pointSlopeTangent(x,y);
             y = dydx * -x + b;
             x += increment;
